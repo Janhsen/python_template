@@ -1,0 +1,22 @@
+// https://containers.dev/implementors/json_reference/ 
+
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "hostRequirements": {
+      "cpus": 2
+    },
+    "waitFor": "onCreateCommand",
+    //"updateContentCommand": "bash requirements.sh",
+    "postCreateCommand":  "bash requirements.sh",
+    "customizations": {
+      "codespaces": {
+        "openFiles": []
+      },
+      "vscode": {
+        "extensions": [
+          "ms-python.python"
+        ]
+      }
+    }
+  }
+  
