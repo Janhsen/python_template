@@ -1,0 +1,16 @@
+ARG AARCH_BALENA_IMAGE=%%BALENA_MACHINE_NAME%%
+
+FROM balenalib/${AARCH_BALENA_IMAGE}-python
+
+#Install 
+COPY ./requirements.txt /requirements.txt
+RUN pip install -r requirements.txt
+
+# Install Dropbear - https://github.com/lifeeth/resin-ssh
+RUN install_packages openssh-server gcc
+
+COPY ./start.sh /usr/src/app/start.sh
+COPY ./src /usr/src/app/
+WORKDIR /usr/src/app
+
+CMD ["bash", "start.sh"]
